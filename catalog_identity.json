@@ -1,0 +1,46 @@
+{
+  "format_version": 1,
+  "game": {
+    "name": "MegaManLegends",
+    "id": "SLUS-00603",
+    "boot_exe": "SLUS_006.03"
+  },
+  "marketing": {
+    "description": "Mega Man Legends static recompilation",
+    "publisher": "Capcom",
+    "year": "1997",
+    "region": "USA",
+    "players": 2
+  },
+  "rom_identity": {
+    "cue_name": "Mega Man Legends.cue",
+    "bin_name": "Mega Man Legends (Track 1).bin",
+    "track_counts": [
+      2
+    ],
+    "require_cue": true,
+    "data_track": {
+      "size": 487205040,
+      "md5": "5d275ab5d6e4ab79b792990c70cc5970",
+      "sha1": "904489e2e8d06e1c44e60d8925329f9472b2d037",
+      "crc32": "1f55bd97"
+    },
+    "disc_fp": "930da972fa00b8bc00dc892da84073f881d1e0eb7e93671274969886b0ef8fab"
+  },
+  "exe": {
+    "load_address": "0x80010000",
+    "entry_pc": "0x8001262C",
+    "text_size": "0x0004A000",
+    "stack_base": "0x801FFFF0"
+  },
+  "seeds": {
+    "count": 199,
+    "source": "boot_exe_jal"
+  },
+  "warnings": [],
+  "notes": [
+    "entry_pc/load_address/text_size/stack_base taken from PS-X EXE header.",
+    "seeds are first-pass boot-EXE JAL targets (+ entry); expect to grow as overlays / runtime paths are discovered.",
+    "required_disc_fp is psxrecomp-toc-v1 (matches runtime DiscIdentity)."
+  ]
+}
