@@ -1,9 +1,9 @@
 # MegaManLegends Recompiled
 
 <!-- retcomm-readme-metrics -->
-[![GitHub downloads (all assets, all releases)](https://img.shields.io/github/downloads/RetroPortingToolKit/MegaManLegendsRecomp/total)](https://github.com/RetroPortingToolKit/MegaManLegendsRecomp/releases)
-[![GitHub downloads (latest release)](https://img.shields.io/github/downloads/RetroPortingToolKit/MegaManLegendsRecomp/latest/total)](https://github.com/RetroPortingToolKit/MegaManLegendsRecomp/releases/latest)
-[![GitHub release](https://img.shields.io/github/v/release/RetroPortingToolKit/MegaManLegendsRecomp)](https://github.com/RetroPortingToolKit/MegaManLegendsRecomp/releases/latest)
+[![GitHub downloads (all assets, all releases)](https://img.shields.io/github/downloads/VuloB1/MegaManLegendsRecomp/total)](https://github.com/VuloB1/MegaManLegendsRecomp/releases)
+[![GitHub downloads (latest release)](https://img.shields.io/github/downloads/VuloB1/MegaManLegendsRecomp/latest/total)](https://github.com/VuloB1/MegaManLegendsRecomp/releases/latest)
+[![GitHub release](https://img.shields.io/github/v/release/VuloB1/MegaManLegendsRecomp)](https://github.com/VuloB1/MegaManLegendsRecomp/releases/latest)
 <!-- /retcomm-readme-metrics -->
 
 Static recompilation of **MegaManLegends** built on
