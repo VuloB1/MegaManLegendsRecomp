@@ -90,3 +90,4 @@ starvation_dump.jsonl
 !/disc_probe.*.json
 !/disc_set.json
 !/.recomp.json
+/toolchain/

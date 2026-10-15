@@ -22,6 +22,40 @@ Mega Man Legends static recompilation
 Scaffolded with the New Project Layout. See
 `psxrecomp/docs/GAME_PROJECT_SETUP.md` for the full flow.
 
+## Modern enhancements
+
+Every enhancement is a mod package (`mods/preloaded/packages/`) and can be
+toggled in the launcher's Mods page.
+
+| Mod | What it does |
+|---|---|
+| Widescreen (`mml.enhancement.widescreen`) | Native 16:9 (21:9 option, untested). The 3D scene is drawn into the extra width: terrain visibility cone widened, parallax sky tiles extended. |
+| Modern Controls (`mml.enhancement.controls`) | Left stick walks in any direction (analog heading), right stick turns the camera and looks up/down. Holding R2 no longer freezes walking while the stick is tilted. |
+| Frame Rate (`mml.enhancement.frame-rate`) | 60 / 120 Hz / display-rate presentation. "Repeat frames" (default) avoids ghosting; "Blend" smooths but ghosts moving models. |
+| Skip FMVs (`mml.enhancement.skip-fmvs`) | Skips the video cutscenes. |
+| PGXP Precision (`psx.enhancement.pgxp`) | Sub-pixel vertex precision. `game.toml` also turns on exact projection, a depth buffer and seam closing to fix cracks between model polygons and wrong draw order. |
+
+Plugin sources: `src/mods/`. Reverse-engineering notes for the controls
+(pad structs, player object, move wrapper): `CONTROLS_NOTES.md`.
+
+Known limits: a thin white line can appear along some terrain edges at some
+camera angles; HD texture packs are not shipped.
+
+## Building
+
+Needs a C compiler toolchain (the project was built with the
+[retcomm toolchain](https://github.com/RetroPortingToolKit/RetroPorting-Toolchains/releases/latest),
+clang) on `PATH`, CMake and Ninja, and your own disc image.
+
+```bash
+cmake -S . -B build-release -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build-release
+```
+
+For debugging, configure a second build with `-DPSX_DEBUG_TOOLS=ON`, run it with
+`--no-launcher --headless --debug-port 4370 --memcard-dir <dir>`, and drive it
+with `tools/dbg.py`.
+
 <!-- retcomm-readme-launcher -->
 ## Retro Launcher
 

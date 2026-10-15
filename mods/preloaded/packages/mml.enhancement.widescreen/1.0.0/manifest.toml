@@ -1,0 +1,45 @@
+format_version = 5
+id = "mml.enhancement.widescreen"
+version = "1.0.0"
+name = "Mega Man Legends Widescreen"
+author = "MegaManLegendsRecomp"
+description = "Renders Mega Man Legends with a wider field of view (experimental)."
+resolver = "declarative"
+save_compatibility = "shared"
+
+[[target]]
+game_id = "SLUS-00603"
+
+[[feature]]
+id = "widescreen"
+name = "Widescreen"
+description = "Enable widescreen rendering and choose the aspect ratio."
+group = "Display"
+default_enabled = true
+
+[[option]]
+feature = "widescreen"
+id = "aspect"
+label = "Aspect ratio"
+description = "Fixed display aspect ratio."
+group = "Display"
+type = "choice"
+default = "16:9"
+
+[[option.choice]]
+value = "16:9"
+label = "16:9"
+
+[[option.choice]]
+value = "21:9"
+label = "21:9"
+
+[[plugin]]
+feature = "widescreen"
+id = "mml.widescreen.16-9"
+when = { aspect = "16:9" }
+
+[[plugin]]
+feature = "widescreen"
+id = "mml.widescreen.21-9"
+when = { aspect = "21:9" }

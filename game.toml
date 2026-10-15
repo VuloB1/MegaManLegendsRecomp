@@ -30,6 +30,8 @@ known_crc32 = [
 ]
 
 [recompiler]
+mod_function_entry_funcs = ["0x80041E90"]
+mod_instruction_sites = ["0x80023528", "0x800218D8"]
 seeds = "seeds/ghidra_funcs.txt"
 out_dir = "generated"
 strict = true
@@ -42,9 +44,16 @@ overlay_cache = true
 [video]
 renderer = "opengl"
 aspect_ratio = "4:3"
+internal_resolution = "1080p"
+texture_filtering = "bilinear"
+offer_skip_fmv = false
+pgxp_preserve_projection = true
+pgxp_depth_buffer = true
+pgxp_seam = "fine"
 
 [controller]
 default_mode = "digital"
+lock_mode = true
 
 # Online mount gate: digests + track count + optional TOC fingerprint
 # (see docs/NETPLAY.md).
@@ -52,3 +61,21 @@ default_mode = "digital"
 require_cue = true
 required_tracks = 2
 required_disc_fp = "930da972fa00b8bc00dc892da84073f881d1e0eb7e93671274969886b0ef8fab"
+
+
+[widescreen]
+native_wide = true
+gte_game_mode = true
+
+[widescreen.cull]
+auto_screen_x = true
+slti_sites = ["0x80023524", "0x80023590"]   # sky/parallax tile loops: x < 320
+screen_w_imms = ["0x140"]
+screen_h_imms = ["0xF0"]
+# Quad renderer in overlay 0x80020000: per-vertex and edge-midpoint X tests.
+screen_x_sites = [
+  "0x80025BF4", "0x80025C24", "0x80025C54", "0x80025C84",
+  "0x80025CC0", "0x80025D08",
+  # Same filter, other primitive type (0x80023EA8), seen in the outdoor areas.
+  "0x80024198", "0x800241C8", "0x800241F8", "0x80024228", "0x80024264", "0x800242AC",
+]

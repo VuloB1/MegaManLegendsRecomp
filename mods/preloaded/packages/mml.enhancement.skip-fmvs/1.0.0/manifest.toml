@@ -1,0 +1,22 @@
+format_version = 5
+id = "mml.enhancement.skip-fmvs"
+version = "1.0.0"
+name = "Mega Man Legends Skip FMVs"
+author = "MegaManLegendsRecomp"
+description = "Plays cutscene movies at accelerated speed without audio so they pass almost instantly."
+resolver = "declarative"
+save_compatibility = "shared"
+
+[[target]]
+game_id = "SLUS-00603"
+
+[[feature]]
+id = "skip-fmvs"
+name = "Skip FMVs"
+description = "Fast-forward the opening and cutscene movies."
+group = "Quality of Life"
+default_enabled = false
+
+[[plugin]]
+feature = "skip-fmvs"
+id = "mml.fmv.skip"

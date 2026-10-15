@@ -16,8 +16,8 @@ project(MegaManLegendsRecomp LANGUAGES C CXX)
 # The wizard (WIZARD_CMAKE_BLOCK / ENABLE_SETUP_WIZARD) is the first-run disc
 # picker; releases are compiled from the committed generated/ C, so it never
 # needs to generate or rebuild anything on a player's machine.
-set(PSX_RECOMP_UI OFF CACHE BOOL
-    "No recomp-ui submodule in this scaffold" FORCE)
+set(PSX_RECOMP_UI ON CACHE BOOL
+    "Launcher UI (options, mods manager) from the recomp-ui submodule" FORCE)
 # Full netplay UI -- enable after adding recomp-ui + testing:
 # if(EXISTS "${PSXRECOMP_ROOT}/lib/recomp-net/CMakeLists.txt")
 #     set(PSX_NETPLAY ON CACHE BOOL "..." FORCE)
@@ -36,7 +36,12 @@ if(NOT IS_DIRECTORY "${PSX_PRELOADED_MODS}")
     set(PSX_PRELOADED_MODS "NONE")
 endif()
 
+file(GLOB MML_MOD_PLUGIN_SOURCES CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/mods/*.c")
+
 psxrecomp_add_game_runtime(psx-runtime
+    PGXP   # hook flavor: follows CPU-built vertices too, so terrain stops wobbling
+    EXTRAS_SOURCES ${MML_MOD_PLUGIN_SOURCES}
     PRELOADED_MODS_DIR "${PSX_PRELOADED_MODS}"
     # ENABLE_NETPLAY_IF_PRESENT
     # NETPLAY_LOBBY_URL ws://netplay.retcomm.net:8765

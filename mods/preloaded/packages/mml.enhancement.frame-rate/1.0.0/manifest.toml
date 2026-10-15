@@ -1,0 +1,86 @@
+format_version = 5
+id = "mml.enhancement.frame-rate"
+version = "1.0.0"
+name = "Mega Man Legends Frame Rate"
+author = "MegaManLegendsRecomp"
+description = "Presents the game at 60/120 Hz or the display refresh. Game logic, timers and audio stay at their stock rate. Requires OpenGL."
+resolver = "declarative"
+save_compatibility = "shared"
+
+[[target]]
+game_id = "SLUS-00603"
+
+[[feature]]
+id = "frame-rate"
+name = "High Frame Rate Output"
+description = "Output at a higher rate than the original 30 Hz game cadence."
+group = "Frame Rate"
+default_enabled = false
+
+[[option]]
+feature = "frame-rate"
+id = "rate"
+label = "Presentation rate"
+description = "Follow the display refresh for an even cadence, or pick a fixed rate."
+group = "Frame Rate"
+type = "choice"
+default = "display"
+
+[[option.choice]]
+value = "60"
+label = "60 FPS"
+
+[[option.choice]]
+value = "120"
+label = "120 FPS"
+
+[[option.choice]]
+value = "display"
+label = "Display refresh (Recommended)"
+
+[[option]]
+feature = "frame-rate"
+id = "blend"
+label = "In-between frames"
+description = "Blending smooths motion but can ghost; repeating keeps the original image."
+group = "Frame Rate"
+type = "choice"
+default = "hold"
+
+[[option.choice]]
+value = "blend"
+label = "Blend frames"
+
+[[option.choice]]
+value = "hold"
+label = "Repeat frames (no ghosting)"
+
+[[plugin]]
+feature = "frame-rate"
+id = "mml.framerate.60.blend"
+when = { rate = "60", blend = "blend" }
+
+[[plugin]]
+feature = "frame-rate"
+id = "mml.framerate.60.hold"
+when = { rate = "60", blend = "hold" }
+
+[[plugin]]
+feature = "frame-rate"
+id = "mml.framerate.120.blend"
+when = { rate = "120", blend = "blend" }
+
+[[plugin]]
+feature = "frame-rate"
+id = "mml.framerate.120.hold"
+when = { rate = "120", blend = "hold" }
+
+[[plugin]]
+feature = "frame-rate"
+id = "mml.framerate.display.blend"
+when = { rate = "display", blend = "blend" }
+
+[[plugin]]
+feature = "frame-rate"
+id = "mml.framerate.display.hold"
+when = { rate = "display", blend = "hold" }
